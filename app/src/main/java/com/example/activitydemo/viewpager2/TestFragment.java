@@ -37,7 +37,14 @@ public class TestFragment extends Fragment {
         text.setText(tag);
         text.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 80);
         text.setTextColor(ContextCompat.getColor(getContext(), android.R.color.holo_red_dark));
+        Log.d(LOG + tag, "onCreateView");
         return text;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.d(LOG + tag, "onActivityCreated");
     }
 
     @Override

@@ -37,7 +37,6 @@ public class ViewPager2Activity extends AppCompatActivity {
         vp.setOffscreenPageLimit(1);
         MyFragmentAdapter adapter = new MyFragmentAdapter(this, fragments);
         vp.setAdapter(adapter);
-
         TabLayout tabLayout = findViewById(R.id.tablayout);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, vp, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
