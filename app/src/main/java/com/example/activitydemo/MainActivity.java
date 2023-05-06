@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.activitydemo.fragment.TestFragmentActivity;
 import com.example.activitydemo.fragment_base.FragmentBaseActivity;
 import com.example.activitydemo.launchmode.LaunchModeMainActivity;
+import com.example.activitydemo.tab.TabActivity;
 import com.example.activitydemo.viewpager.ViewPagerActivity;
 import com.example.activitydemo.viewpager2.ViewPager2Activity;
 
@@ -50,5 +52,22 @@ public class MainActivity extends AppCompatActivity {
     public void onTest4(View v) {
         startActivity(new Intent(this, ViewPager2Activity.class));
     }
+
+    /**
+     * 底部tab切换Fragment
+     * @param v
+     */
+    public void onTest5(View v) {
+        startActivity(new Intent(this, TabActivity.class));
+    }
+
+    /**
+     * Fragment 基础测试
+     * @param v
+     */
+    public void onTest6(View v) {
+        startActivity(new Intent(this, TestFragmentActivity.class));
+    }
+
 
 }

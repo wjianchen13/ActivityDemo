@@ -1,7 +1,6 @@
 package com.example.activitydemo.viewpager2;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +28,7 @@ public class ViewPager2Activity extends AppCompatActivity {
 
         final List<Fragment> fragments = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            Fragment TestFragment = new TestFragment("卡" + i);
+            Fragment TestFragment = new ViewPager2Fragment("卡" + i);
             fragments.add(TestFragment);
         }
 
@@ -41,7 +40,7 @@ public class ViewPager2Activity extends AppCompatActivity {
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(tabLayout, vp, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                TestFragment f = (TestFragment) fragments.get(position);
+                ViewPager2Fragment f = (ViewPager2Fragment) fragments.get(position);
                 tab.setText(f.getTabTag());
             }
         });

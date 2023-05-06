@@ -54,6 +54,24 @@
             android:textAllCaps="false"
             android:onClick="onTest4"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="底部tab切换Fragment"
+            android:textAllCaps="false"
+            android:onClick="onTest5"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Fragment 基础测试"
+            android:textAllCaps="false"
+            android:onClick="onTest6"/>
+
     </LinearLayout>
 
 </ScrollView>
