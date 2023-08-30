@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.activitydemo.bundle.FirstActivity;
 import com.example.activitydemo.fragment.TestFragmentActivity;
 import com.example.activitydemo.fragment_base.FragmentBaseActivity;
 import com.example.activitydemo.launchmode.LaunchModeMainActivity;
@@ -69,5 +70,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, TestFragmentActivity.class));
     }
 
+    /**
+     * Fragment 基础测试
+     * @param v
+     */
+    public void onTest7(View v) {
+        startActivity(new Intent(this, FirstActivity.class));
+    }
 
 }

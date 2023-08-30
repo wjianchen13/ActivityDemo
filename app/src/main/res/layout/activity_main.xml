@@ -72,6 +72,15 @@
             android:textAllCaps="false"
             android:onClick="onTest6"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Activity 传递数据大小测试"
+            android:textAllCaps="false"
+            android:onClick="onTest7"/>
+
     </LinearLayout>
 
 </ScrollView>
