@@ -3,7 +3,9 @@ package com.example.activitydemo.bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class User implements Parcelable {
+import java.io.Serializable;
+
+public class User implements Parcelable, Serializable {
 
     private int age;
     private String name;
