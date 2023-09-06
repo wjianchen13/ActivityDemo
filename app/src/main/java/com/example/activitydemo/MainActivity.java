@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.activitydemo.bundle.FirstActivity;
 import com.example.activitydemo.fragment.TestFragmentActivity;
 import com.example.activitydemo.fragment_base.FragmentBaseActivity;
+import com.example.activitydemo.height.HeightActivity;
 import com.example.activitydemo.launchmode.LaunchModeMainActivity;
 import com.example.activitydemo.tab.TabActivity;
 import com.example.activitydemo.viewpager.ViewPagerActivity;
@@ -76,6 +77,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onTest7(View v) {
         startActivity(new Intent(this, FirstActivity.class));
+    }
+
+    /**
+     * Activity Fragment布局高度测试
+     * @param v
+     */
+    public void onTest8(View v) {
+        startActivity(new Intent(this, HeightActivity.class));
     }
 
 }

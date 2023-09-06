@@ -33,8 +33,9 @@
         <activity android:name=".fragment.TestFragmentActivity" />
         <activity android:name=".bundle.FirstActivity" />
         <activity android:name=".bundle.SecondActivity" />
+        <activity android:name=".height.HeightActivity" />
+        <activity android:name=".height.HeightFragmentActivity" />
 
-        
     </application>
 
 </manifest>
