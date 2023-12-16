@@ -21,6 +21,12 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        TransactionData.clear();
+    }
+
     public void onTest1(View v) {
         Intent it = getIntent();
         if (it != null) {
@@ -48,6 +54,31 @@ public class SecondActivity extends AppCompatActivity {
             if(member != null && member.getList() != null && member.getList().size() > 0) {
                 System.out.println("========================> member size: " + member.getList().size());
             }
+        }
+    }
+
+    /**
+     * 传递数据到另外的Activity 静态变量
+     * @param v
+     */
+    public void onTest4(View v) {
+        String str = TransactionData.mTestJson;
+        if(!TextUtils.isEmpty(str)) {
+            Member member = CommonGsonUtils.fromJson(str, Member.class);
+            if(member != null && member.getList() != null && member.getList().size() > 0) {
+                System.out.println("========================> member size: " + member.getList().size());
+            }
+        }
+    }
+
+    /**
+     * 传递数据到另外的Activity 静态变量
+     * @param v
+     */
+    public void onTest5(View v) {
+        Member member = TransactionData.mMember;
+        if(member != null && member.getList() != null && member.getList().size() > 0) {
+            System.out.println("========================> member size: " + member.getList().size());
         }
     }
 

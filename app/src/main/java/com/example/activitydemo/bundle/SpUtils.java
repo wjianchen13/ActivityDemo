@@ -17,6 +17,7 @@ public class SpUtils {
 
     private static final String SETTING_NAME = "transform_data";
 
+
     public static void setContext(Context context) {
         mContext = context;
     }

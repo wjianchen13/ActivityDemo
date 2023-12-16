@@ -21,6 +21,11 @@ public class SingleTaskActivity extends AppCompatActivity {
         tvDesc.setText(this.toString() + "\ncurrent task id: " + this.getTaskId());
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+    }
+
     public void onOther(View v) {
         startActivity(new Intent(this, OtherActivity.class));
     }

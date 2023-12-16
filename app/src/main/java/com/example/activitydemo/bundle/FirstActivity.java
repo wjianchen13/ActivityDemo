@@ -2,9 +2,13 @@ package com.example.activitydemo.bundle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.os.Parcel;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.activitydemo.R;
@@ -71,7 +75,7 @@ public class FirstActivity extends AppCompatActivity {
     public void onTest3(View v) {
         Intent it = new Intent(this, SecondActivity.class);
         Bundle bd = new Bundle();
-        Member member = new Member(getMember());
+        Member member = new Member(getMember(1000000));
         bd.putSerializable("member", member);
         it.putExtras(bd);
         startActivity(it);
@@ -80,28 +84,45 @@ public class FirstActivity extends AppCompatActivity {
     private String json;
 
     public void onTest4(View v) {
-        Member member = new Member(getMember());
+        Member member = new Member(getMember(1000000));
+
         json = CommonGsonUtils.toJson(member);
     }
 
+
+    private Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            super.handleMessage(msg);
+
+        }
+    };
+
     public void onTest5(View v) {
-        SpUtils.commitString("first_data", json, new SpUtils.ISpListener() {
+        new Thread(new Runnable() {
             @Override
-            public void onCommit(boolean success) {
-                if(success) {
-                    Intent it = new Intent(FirstActivity.this, SecondActivity.class);
-                    Bundle bd = new Bundle();
-                    it.putExtras(bd);
-                    startActivity(it);
-                }
+            public void run() {
+                Member member = new Member(getMember(1000000));
+                json = CommonGsonUtils.toJson(member);
+                SpUtils.commitString("first_data", json, new SpUtils.ISpListener() {
+                    @Override
+                    public void onCommit(boolean success) {
+                        if(success) {
+                            Intent it = new Intent(FirstActivity.this, SecondActivity.class);
+                            Bundle bd = new Bundle();
+                            it.putExtras(bd);
+                            startActivity(it);
+                        }
+                    }
+                });
             }
-        });
+        }).start();
     }
 
-    private ArrayList<User> getMember() {
+    private ArrayList<User> getMember(int num) {
         ArrayList<User> users = new ArrayList<>();
         int size = 0;
-        for(int i = 0; i < 1000000; i ++) {
+        for(int i = 0; i < num; i ++) {
             User myParcelable = new User();
             users.add(myParcelable);
         }
@@ -109,5 +130,59 @@ public class FirstActivity extends AppCompatActivity {
         System.out.println("=========================> member size: " + SizeCalculator.calcSize(users));
         return users;
     }
-    
+
+    /**
+     * 通过静态变量传递跳转数据
+     * @param v
+     */
+    public void onTest6(View v) {
+        Handler handler = new Handler(Looper.getMainLooper()){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if(msg != null && msg.what == 1) {
+                    Intent it = new Intent(FirstActivity.this, SecondActivity.class);
+                    Bundle bd = new Bundle();
+                    it.putExtras(bd);
+                    startActivity(it);
+                }
+            }
+        };
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Member member = new Member(getMember(100000));
+                json = CommonGsonUtils.toJson(member);
+                TransactionData.mTestJson = json;
+                handler.sendEmptyMessage(1);
+            }
+        }).start();
+    }
+
+    /**
+     * 通过静态变量传递跳转数据
+     * @param v
+     */
+    public void onTest7(View v) {
+        Handler handler = new Handler(Looper.getMainLooper()){
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if(msg != null && msg.what == 1) {
+                    Intent it = new Intent(FirstActivity.this, SecondActivity.class);
+                    Bundle bd = new Bundle();
+                    it.putExtras(bd);
+                    startActivity(it);
+                }
+            }
+        };
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Member member = new Member(getMember(100000));
+                TransactionData.mMember = member;
+                handler.sendEmptyMessage(1);
+            }
+        }).start();
+    }
 }

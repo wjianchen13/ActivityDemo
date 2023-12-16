@@ -85,4 +85,30 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_test4" />
 
+    <Button
+        android:id="@+id/btn_test6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="通过静态变量传递跳转数据"
+        android:textAllCaps="false"
+        android:onClick="onTest6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_test5" />
+
+    <Button
+        android:id="@+id/btn_test7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="通过静态变量传递跳转数据"
+        android:textAllCaps="false"
+        android:onClick="onTest7"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_test6" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

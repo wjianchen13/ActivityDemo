@@ -23,7 +23,8 @@
         <activity android:name=".launchmode.OtherActivity" />
         <activity android:name=".launchmode.SecondActivity" />
         <activity android:name=".launchmode.SingleInstanceActivity" />
-        <activity android:name=".launchmode.SingleTaskActivity" />
+        <activity android:name=".launchmode.SingleTaskActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".launchmode.SingleTopActivity" />
         <activity android:name=".launchmode.StandardActivity" />
         <activity android:name=".fragment_base.FragmentBaseActivity" />
